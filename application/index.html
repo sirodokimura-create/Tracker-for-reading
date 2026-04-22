@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Читалка - Трекер книг</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>Читалка</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Главная</span>
+                </li>
+                <li class="nav-item" data-page="library">
+                    <i class="fas fa-books"></i>
+                    <span>Библиотека</span>
+                </li>
+                <li class="nav-item" data-page="search">
+                    <i class="fas fa-search"></i>
+                    <span>Поиск</span>
+                </li>
+                <li class="nav-item" data-page="calendar">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Календарь</span>
+                </li>
+            </ul>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Читатель</span>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            
+            <section id="home-page" class="page active">
+                <div class="page-header">
+                    <h1>Добро пожаловать!</h1>
+                    <p>Ваши последние книги</p>
+                </div>
+                <div class="recent-books">
+                    <h2>Недавно добавленные</h2>
+                    <div class="books-grid recent-grid" id="recent-books"></div>
+                </div>
+                <div class="reading-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-book-reader"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="reading-count">0</span>
+                            <span class="stat-label">Читаю сейчас</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="read-count">0</span>
+                            <span class="stat-label">Прочитано</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-books">0</span>
+                            <span class="stat-label">Всего книг</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section id="library-page" class="page">
+                <div class="page-header">
+                    <h1>Библиотека</h1>
+                    <div class="library-header">
+                        <div class="filter-controls">
+                            <select id="status-filter" class="status-filter">
+                                <option value="all">📚 Все книги</option>
+                                <option value="want_to_read">⭐ Хочу прочитать</option>
+                                <option value="reading">📖 Читаю</option>
+                                <option value="read">✅ Прочитано</option>
+                                <option value="abandoned">❌ Брошено</option>
+                            </select>
+                        </div>
+                        <button id="add-book-btn" class="btn-primary">
+                            <i class="fas fa-plus"></i> Добавить книгу
+                        </button>
+                    </div>
+                </div>
+                <div class="books-grid library-grid" id="library-books"></div>
+            </section>
+
+            
+            <section id="search-page" class="page">
+                <div class="page-header">
+                    <h1>Поиск книг</h1>
+                    <p>Поиск через Google Books API</p>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Введите название книги или автора...">
+                    </div>
+                    <div class="search-results" id="search-results"></div>
+                </div>
+            </section>
+
+            
+            <section id="calendar-page" class="page">
+                <div class="page-header">
+                    <h1>Анализ активности</h1>
+                    <p>Количество дней чтения в этом месяце</p>
+                </div>
+                <div id="calendar-container" class="calendar-section">
+                    <div class="calendar-loading">Загрузка...</div>
+                </div>
+            </section>
+
+            
+            <div id="book-modal" class="modal">
+                <div class="modal-content book-details">
+                    <span class="close-modal">&times;</span>
+                    <div class="book-detail-container" id="book-detail-content"></div>
+                </div>
+            </div>
+            <div id="add-book-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>Добавить новую книгу</h2>
+                    <form id="add-book-form">
+                        
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
