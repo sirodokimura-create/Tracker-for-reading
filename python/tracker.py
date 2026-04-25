@@ -35,7 +35,7 @@ def safe_stderr_print(msg):
 
 safe_stderr_print("Python процесс запущен!")
 
-API_KEY = "AIzaSyAVopSdWmDv73diRWlaqkRqs4eO9mARywM"
+API_KEY = 
 USE_API_KEY = False
 
 class BookParser:
